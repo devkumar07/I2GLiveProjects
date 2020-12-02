@@ -1,0 +1,405 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>I2G-Summary Table</title>
+</head>
+<style>
+
+</style>
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+<style type="text/css">td.details-control {
+    background: url('../resources/details_open.png') no-repeat center center;
+    cursor: pointer;
+  }
+  tr.shown td.details-control {
+      background: url('../resources/details_close.png') no-repeat center center;
+  }
+    #schedule table{
+        border: 1px solid black;
+        height: max-content;
+    }
+    #schedule tr{
+        border-spacing: 5em;
+    }
+    #schedule td,#schedule th{
+        border: 2px solid black;
+        padding:0 20px;
+        width: 10%;
+        height: 10%;
+        text-align: center;
+        align-items: center;
+    }
+    #schedule button {
+        background-color: Transparent;
+        background-repeat:no-repeat;
+        border: none;
+        cursor:pointer;
+        overflow: hidden;
+        outline:none;
+    }
+    #projects{
+        margin-top: 10%;
+    }
+    #CAP td{
+        min-width:75px;
+    }
+</style>
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        function format(d) {
+          // `d` is the original data object for the row
+          return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+            '<tr>' +
+            '<td><b>Track:</b></td>' +
+            '<td>' + d.gsx$track.$t + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td><b>Class:</b></td>' +
+            '<td>' + d.gsx$class.$t + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td><b>Team#:</b></td>' +
+            '<td>' + d.gsx$team.$t + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td><b>Team Name:</b></td>' +
+            '<td>' + d.gsx$teamname.$t + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td><b>Students Names:</b></td>' +
+            '<td>' + d.gsx$studentnames.$t + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td><b>Project Title:</b></td>' +
+            '<td>' + d.gsx$projecttitle.$t + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td><b>Organization:</b></td>' +
+            '<td>' + d.gsx$organization.$t + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td><b>Summary:</b></td>' +
+            '<td>' + d.gsx$shortsummary.$t + '</td>' +
+            '</tr>' 
+            '</table>';
+        }
+        $(document).ready(function() {
+          var table = $('#example').DataTable({
+            "pageLength": 50,
+            "search": {
+              "search":document.location.search.replace(/^.*?\=/,'')
+            },
+            "bServerSide": false,
+            "bProcessing": true,
+            "sAjaxDataProp": "feed.entry",
+            "sAjaxSource": "https://spreadsheets.google.com/feeds/list/1TJZfQFYf0iw1SBcqrdnS_efOsFzIppMg1aOajE-atc4/1/public/values?alt=json",
+          "aoColumns": [{
+                "className": 'details-control',
+                "orderable": false,
+                "mDataProp": "gsx$buttons.$t",
+                "defaultContent": ''
+              },
+              {
+                "mDataProp": "gsx$track.$t"
+              },
+              {
+                "mDataProp": "gsx$class.$t"
+              },
+              {
+                "mDataProp": "gsx$team.$t"
+              },
+              {
+                "mDataProp": "gsx$teamname.$t"
+              },
+              {
+                "mDataProp": "gsx$projecttitle.$t"
+              },
+              {
+                "mDataProp": "gsx$organization.$t"
+              }
+            ],
+            "order": [
+              [1, 'desc']
+            ],
+            fixedHeader: {
+              header: true,
+              footer: true
+            }
+          });
+          $('#example tbody').on('click', 'td.details-control', function() {
+            var tr = $(this).closest('tr');
+            var row = table.row(tr);
+            if (row.child.isShown()) {
+              // This row is already open - close it
+              row.child.hide();
+              tr.removeClass('shown');
+            } else {
+              // Open this row
+              row.child(format(row.data())).show();
+              tr.addClass('shown');
+            }
+          });
+        });
+    </script>
+<body>
+    <script>
+        function passvalue(slot){
+            window.document.location = 'https://innovatetogrow.ucmerced.edu/event'+'?value='+document.getElementById(slot).innerHTML;
+        }
+    </script>
+    <h2>Schedule:</h2>
+    <div id="schedule">
+        <table>
+            <tr>
+            <th>Engineering Capstone (CAP)</th>
+            <th>Engineering Service Learning (ESL)</th>
+            <th>Software Engineering Capstone (CSE)</th>
+            </tr>
+            <tr>
+                <td>
+                    <div id = "CAP">
+                    <table>
+                        <tr>
+                            <th><b>Start</b></th>
+                            <th><b>Room 1</b></th>
+                            <th><b>Room 2</b></th>
+                            <th><b>Room 3</b></th>
+                            <th><b>Room 4</b></th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><b>AgTech</b></td>
+                            <td><b>Food Processing</b></td>
+                            <td><b>Sustainability</b></td>
+                            <td><b>Transportation</b></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Zoom 1 link</td>
+                            <td>Zoom 2 link</td>
+                            <td>Zoom 3 link</td>
+                            <td>Zoom 4 link</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>[Judge form CAP link]</td>
+                            <td>[Judge form CAP link]</td>
+                            <td>[Judge form CAP link]</td>
+                            <td>[Judge form CAP link]</td>
+                        </tr>
+                        <tr>
+                            <td><b>11:15</b></td>
+                            <td><b>Intro Video</b></td>
+                            <td><b>Intro Video</b></td>
+                            <td><b>Intro Video</b></td>
+                            <td><b>Intro Video</b></td>
+                        </tr>
+                        <tr>
+                            <td>11:30</td>
+                            <td><button id = 'slot11' onClick="passvalue('slot11')">CAP01</button></td>
+                            <td><button id = 'slot21' onClick="passvalue('slot21')">CAP09</button></td>
+                            <td><button id = 'slot31' onClick="passvalue('slot31')">CAP16</button></td>
+                            <td><button id = 'slot41' onClick="passvalue('slot14')">CAP18</button></td>
+                        </tr>
+                        <tr>
+                            <td>12:00</td>
+                            <td><button id = 'slot12' onClick="passvalue('slot12')">CAP10</button></td>
+                            <td><button id = 'slot22' onClick="passvalue('slot22')">CAP04</button></td>
+                            <td><button id = 'slot32' onClick="passvalue('slot32')">CAP11</button></td>
+                            <td><button id = 'slot42' onClick="passvalue('slot42')">CAP15</button></td>
+                        </tr>
+                        <tr>
+                            <td>12:30</td>
+                            <td><button id = 'slot13' onClick="passvalue('slot13')">CAP22</button></td>
+                            <td><button id = 'slot23' onClick="passvalue('slot23')">CAP05</button></td>
+                            <td><button id = 'slot33' onClick="passvalue('slot33')">CAP20</button></td>
+                            <td><button id = 'slot43' onClick="passvalue('slot43')">CAP03</button></td>
+                        </tr>
+                        <tr>
+                            <td>13:00</td>
+                            <td><button id = 'slot14' onClick="passvalue('slot14')">CAP24</button></td>
+                            <td><button id = 'slot24' onClick="passvalue('slot24')">CAP12</button></td>
+                            <td><button id = 'slot34' onClick="passvalue('slot34')">CAP21</button></td>
+                            <td><button id = 'slot44' onClick="passvalue('slot44')">CAP06</button></td>
+                        </tr>
+                        <tr>
+                            <td>13:30</td>
+                            <td><button id = 'slot15' onClick="passvalue('slot15')">CAP10</button></td>
+                            <td><button id = 'slot25' onClick="passvalue('slot25')">CAP13</button></td>
+                            <td><button id = 'slot35' onClick="passvalue('slot35')">CAP23</button></td>
+                            <td><button id = 'slot45' onClick="passvalue('slot45')">CAP07</button></td>
+                        </tr>
+                        <tr>
+                            <td>14:00</td>
+                            <td><button id = 'slot16' onClick="passvalue('slot16')">CAP17</button></td>
+                            <td><button id = 'slot26' onClick="passvalue('slot26')">CAP14</button></td>
+                            <td><button id = 'slot36' onClick="passvalue('slot36')">CAP19</button></td>
+                            <td><button id = 'slot46' onClick="passvalue('slot46')">CAP08</button></td>
+                        </tr>
+                        <tr>
+                            <td>14:30</td>
+                            <td>End of Presentations</td>
+                            <td>End of Presentations</td>
+                            <td>End of Presentations</td>
+                            <td>End of Presentations</td>
+                        </tr>
+                    </table>
+                    </div>
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <th>Start</th>
+                            <th>Room 5</th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><b>ESL</b></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Zoom 5 link</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>[Judge form ESL Link]</td>
+                        </tr>
+                        <tr>
+                            <td>11:15</td>
+                            <td><b>Intro Video</b></td>
+                        </tr>
+                        <tr>
+                            <td>11:30</td>
+                            <td>Slot 51</td>
+                        </tr>
+                        <tr>
+                            <td>12:00</td>
+                            <td>Slot 52</td>
+                        </tr>
+                        <tr>
+                            <td>12:30</td>
+                            <td>Slot 53</td>
+                        </tr>
+                        <tr>
+                            <td>13:00</td>
+                            <td>Slot 54</td>
+                        </tr>
+                        <tr>
+                            <td>13:30</td>
+                            <td>End of Presentations</td>
+                        </tr>
+                    </table>
+                </td>
+                <td>
+                    <table>
+                        <tr>
+                            <th>Start</th>
+                            <th>Room 6</th>
+                            <th>Room 7</th>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td><b>Biz Problems</b></td>
+                            <td><b>Software Problems</b></td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Zoom 6 link</td>
+                            <td>Zoom 7 link</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>[Judge form CAP link]</td>
+                            <td>[Judge form CAP link]</td>
+                        </tr>
+                        <tr>
+                            <td>11:15</td>
+                            <td>Intro Video</td>
+                            <td>Intro Video</td>
+                        </tr>
+                        <tr>
+                            <td>11:30</td>
+                            <td>Slot 61</td>
+                            <td>Slot 71</td>
+                        </tr>
+                        <tr>
+                            <td>11:50</td>
+                            <td>Slot 72</td>
+                            <td>Slot 72</td>
+                        </tr>
+                        <tr>
+                            <td>12:10</td>
+                            <td>Slot 63</td>
+                            <td>Slot 73</td>
+                        </tr>
+                        <tr>
+                            <td>12:30</td>
+                            <td>Slot 64</td>
+                            <td>Slot 74</td>
+                        </tr>
+                        <tr>
+                            <td>12:50</td>
+                            <td>Slot 65</td>
+                            <td>Slot 75</td>
+                        </tr>
+                        <tr>
+                            <td>13:10</td>
+                            <td>Slot 66</td>
+                            <td>Slot 76</td>
+                        </tr>
+                        <tr>
+                            <td>13:30</td>
+                            <td>Slot 67</td>
+                            <td>Slot 77</td>
+                        </tr>
+                        <tr>
+                            <td>13:50</td>
+                            <td>Slot 68</td>
+                            <td>Slot 78</td>
+                        </tr>
+                        <tr>
+                            <td>14:10</td>
+                            <td>Slot 69</td>
+                            <td>End of Presentations</td>
+                        </tr>
+                        <tr>
+                            <td>14:30</td>
+                            <td>End of Presentations</td>
+                            <td></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+    </div>
+    <div id="projects">
+        <h2>Project Info:</h2>
+        <table class="display" id="example" style="width:100%">
+            <thead>
+            <tr>
+                <th>Details</th>
+                <th>Track</th>
+                <th>Class</th>
+                <th>Team#</th>
+                <th>Team Name</th>
+                <th>Project Title</th>
+                <th>Organization</th>
+            </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                <th>Details</th>
+                <th>Track</th>
+                <th>Class</th>
+                <th>Team#</th>
+                <th>Team Name</th>
+                <th>Project Title</th>
+                <th>Organization</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</body>
+</html>
