@@ -18,16 +18,15 @@
         border: 1px solid black;
         height: max-content;
     }
-    #schedule tr{
-        border-spacing: 5em;
-    }
     #schedule td,#schedule th{
         border: 2px solid black;
-        padding:0 20px;
         width: 10%;
         height: 10%;
         text-align: center;
-        align-items: center;
+        min-height: 20px;
+        margin: 0px;
+        border-collapse: collapse;
+        padding: 0px;
     }
     #schedule button {
         background-color: Transparent;
@@ -38,10 +37,15 @@
         outline:none;
     }
     #projects{
-        margin-top: 10%;
+        margin-top: 3%;
     }
-    #CAP td{
-        min-width:75px;
+    #CAP td, #CSE td, #ESL td{
+        min-width:40px;
+    }
+    #ESL table{
+        margin: 0px;
+        border-collapse: collapse;
+        padding: 0px;
     }
 </style>
 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
@@ -149,7 +153,6 @@
             window.document.location = 'https://innovatetogrow.ucmerced.edu/event'+'?value='+document.getElementById(slot).innerHTML;
         }
     </script>
-    <h2>Schedule:</h2>
     <div id="schedule">
         <table>
             <tr>
@@ -177,17 +180,31 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td>Zoom 1 link</td>
-                            <td>Zoom 2 link</td>
-                            <td>Zoom 3 link</td>
-                            <td>Zoom 4 link</td>
+                            <td>Zoom Room 1</td>
+                            <td>Zoom Room 2</td>
+                            <td>Zoom Room 3</td>
+                            <td>Zoom Room 4</td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td>[Judge form CAP link]</td>
-                            <td>[Judge form CAP link]</td>
-                            <td>[Judge form CAP link]</td>
-                            <td>[Judge form CAP link]</td>
+                            <td>Passcode: 000001</td>
+                            <td>Passcode: 000002</td>
+                            <td>Passcode: 000003</td>
+                            <td>Passcode: 000004</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>CAP Judge Form</td>
+                            <td>CAP Judge Form</td>
+                            <td>CAP Judge Form</td>
+                            <td>CAP Judge Form</td>
+                        </tr>
+                        <tr>
+                            <td>....</td>
+                            <td>....</td>
+                            <td>....</td>
+                            <td>....</td>
+                            <td>....</td>
                         </tr>
                         <tr>
                             <td><b>11:15</b></td>
@@ -249,6 +266,7 @@
                     </div>
                 </td>
                 <td>
+                    <div id = "ESL">
                     <table>
                         <tr>
                             <th>Start</th>
@@ -260,11 +278,19 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td>Zoom 5 link</td>
+                            <td>Zoom Room 5</td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td>[Judge form ESL Link]</td>
+                            <td>Passcode: 000005</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>ESL Judge Form</td>
+                        </tr>
+                        <tr>
+                            <td>....</td>
+                            <td>....</td>
                         </tr>
                         <tr>
                             <td>11:15</td>
@@ -291,8 +317,10 @@
                             <td>End of Presentations</td>
                         </tr>
                     </table>
+                    </div>
                 </td>
                 <td>
+                    <div id = "CSE">
                     <table>
                         <tr>
                             <th>Start</th>
@@ -306,13 +334,23 @@
                         </tr>
                         <tr>
                             <td></td>
-                            <td>Zoom 6 link</td>
-                            <td>Zoom 7 link</td>
+                            <td>Zoom Room 6</td>
+                            <td>Zoom Room 7</td>
                         </tr>
                         <tr>
                             <td></td>
-                            <td>[Judge form CAP link]</td>
-                            <td>[Judge form CAP link]</td>
+                            <td>Passcode: 000006</td>
+                            <td>Passcode: 000007</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>CSE Judge Form</td>
+                            <td>CSE Judge Form</td>
+                        </tr>
+                        <tr>
+                            <td>....</td>
+                            <td>....</td>
+                            <td>....</td>
                         </tr>
                         <tr>
                             <td>11:15</td>
@@ -370,12 +408,12 @@
                             <td></td>
                         </tr>
                     </table>
+                    </div>
                 </td>
             </tr>
         </table>
     </div>
     <div id="projects">
-        <h2>Project Info:</h2>
         <table class="display" id="example" style="width:100%">
             <thead>
             <tr>
