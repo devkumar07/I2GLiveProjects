@@ -36,14 +36,28 @@
         overflow: hidden;
         outline:none;
     }
+    #awards table{
+        border: 1px solid black;
+        height: max-content;
+    }
     #projects{
         margin-top: 3%;
     }
     #CAP td, #CSE td, #ESL td{
         min-width:40px;
     }
-    #ESL table{
-        margin: 0px;
+    #CAP table, #ESL table{
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        border-collapse: collapse;
+        padding: 0px;
+    }
+    #CSE table{
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 30px;
         border-collapse: collapse;
         padding: 0px;
     }
@@ -161,7 +175,7 @@
             <th>Software Engineering Capstone (CSE)</th>
             </tr>
             <tr>
-                <td>
+                <td valign = "top">
                     <div id = "CAP">
                     <table>
                         <tr>
@@ -265,7 +279,7 @@
                     </table>
                     </div>
                 </td>
-                <td>
+                <td valign = "top">
                     <div id = "ESL">
                     <table>
                         <tr>
@@ -319,7 +333,7 @@
                     </table>
                     </div>
                 </td>
-                <td>
+                <td valign = "top">
                     <div id = "CSE">
                     <table>
                         <tr>
