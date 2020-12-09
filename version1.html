@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>I2G</title>
+</head>
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+<style type="text/css">td.details-control {
+    background: url('../resources/details_open.png') no-repeat center center;
+    cursor: pointer;
+  }
+  tr.shown td.details-control {
+      background: url('../resources/details_close.png') no-repeat center center;
+  }
+    #schedule table{
+        border: 1px solid black;
+        height: max-content;
+    }
+    #schedule td,#schedule th{
+        border: 2px solid black;
+        width: 10%;
+        height: 10%;
+        text-align: center;
+        min-height: 20px;
+        margin: 0px;
+        border-collapse: collapse;
+        padding: 0px;
+    }
+    #schedule button {
+        background-color: Transparent;
+        background-repeat:no-repeat;
+        border: none;
+        cursor:pointer;
+        overflow: hidden;
+        outline:none;
+    }
+    #awards table{
+        border: 1px solid black;
+        height: max-content;
+    }
+    #projects{
+        margin-top: 3%;
+    }
+    #CAP td, #CSE td, #ESL td{
+        min-width:40px;
+    }
+    #CAP table, #ESL table{
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        border-collapse: collapse;
+        padding: 0px;
+    }
+    #CSE table{
+        margin-top: 30px;
+        margin-left: auto;
+        margin-right: auto;
+        margin-bottom: 30px;
+        border-collapse: collapse;
+        padding: 0px;
+    }
+</style>
+<style type="text/css">.tableHeader {
+	background-color:#e5e5e5;
+	margin-left: 0 !important;	
+	padding-left: 12px !important;
+	margin-bottom: 15px !important;
+}
+.figure {
+	border-bottom: 1px solid #e5e5e5;
+	margin: 15px 0px !important;
+	padding-left: 12px !important;
+	padding-bottom: 10px !important;
+	
+	}
+	
+	.figure .span4 .span3{
+		white-space: wrap !important;
+		margin-bottom: 7px;
+	}
+.last-row{
+	border-bottom: none !important
+}
+button{
+    white-space: wrap !important;
+    font-size: 15px;
+    background-color: Transparent;
+    background-repeat:no-repeat;
+    border: none;
+    cursor:pointer;
+    overflow: hidden;
+    outline:none;
+}
+</style>
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <script type="text/javascript">
+        function format(d) {
+          // `d` is the original data object for the row
+          return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
+            '<tr>' +
+            '<td><b>Track:</b></td>' +
+            '<td>' + d.gsx$track.$t + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td><b>Class:</b></td>' +
+            '<td>' + d.gsx$class.$t + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td><b>Team#:</b></td>' +
+            '<td>' + d.gsx$team.$t + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td><b>Team Name:</b></td>' +
+            '<td>' + d.gsx$teamname.$t + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td><b>Students Names:</b></td>' +
+            '<td>' + d.gsx$studentnames.$t + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td><b>Project Title:</b></td>' +
+            '<td>' + d.gsx$projecttitle.$t + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td><b>Organization:</b></td>' +
+            '<td>' + d.gsx$organization.$t + '</td>' +
+            '</tr>' +
+            '<tr>' +
+            '<td><b>Summary:</b></td>' +
+            '<td>' + d.gsx$shortsummary.$t + '</td>' +
+            '</tr>' 
+            '</table>';
+        }
+        $(document).ready(function() {
+          var table = $('#example').DataTable({
+            "pageLength": 50,
+            "search": {
+              "search":document.location.search.replace(/^.*?\=/,'')
+            },
+            "bServerSide": false,
+            "bProcessing": true,
+            "sAjaxDataProp": "feed.entry",
+            "sAjaxSource": "https://spreadsheets.google.com/feeds/list/1TJZfQFYf0iw1SBcqrdnS_efOsFzIppMg1aOajE-atc4/1/public/values?alt=json",
+          "aoColumns": [{
+                "className": 'details-control',
+                "orderable": false,
+                "mDataProp": "gsx$buttons.$t",
+                "defaultContent": ''
+              },
+              {
+                "mDataProp": "gsx$track.$t"
+              },
+              {
+                "mDataProp": "gsx$class.$t"
+              },
+              {
+                "mDataProp": "gsx$team.$t"
+              },
+              {
+                "mDataProp": "gsx$teamname.$t"
+              },
+              {
+                "mDataProp": "gsx$projecttitle.$t"
+              },
+              {
+                "mDataProp": "gsx$organization.$t"
+              }
+            ],
+            "order": [
+              [1, 'desc']
+            ],
+            fixedHeader: {
+              header: true,
+              footer: true
+            }
+          });
+          $('#example tbody').on('click', 'td.details-control', function() {
+            var tr = $(this).closest('tr');
+            var row = table.row(tr);
+            if (row.child.isShown()) {
+              // This row is already open - close it
+              row.child.hide();
+              tr.removeClass('shown');
+            } else {
+              // Open this row
+              row.child(format(row.data())).show();
+              tr.addClass('shown');
+            }
+          });
+        });
+    </script>
+<body>
+    <script>
+        function passvalue(slot){
+            window.document.location = 'https://innovatetogrow.ucmerced.edu/schedule'+'?value='+document.getElementById(slot).innerHTML;
+        }
+    </script>
+    <h1>VERSION 1:</h1>
+    <div class="span12 figure">
+        <div class="span6">
+            <h4 style="text-align: center;">Engineering Capstone (CAP)</h4>
+            <div class="span12 figure" style="text-align: center;">
+                <div class="span3">
+                    <h5><b>Track 1</b></h5>
+                    <h6><b>AgTech</b></h6>
+                    <a href="https://innovatetogrow.ucmerced.edu/schedule">Room 1</a>
+                    <h6>Pass: I2G2020</h6>
+                    <h6>Judge Form</h6>
+                </div>
+                <div class="span3">
+                    <h5><b>Track 2</b></h5>
+                    <h6><b>Food Processing</b></h6>
+                    <a href="https://innovatetogrow.ucmerced.edu/schedule">Room 2</a>
+                    <h6>Pass: I2G2020</h6>
+                    <h6>Judge Form</h6>
+                </div>
+    
+                <div class="span3">
+                    <h5><b>Track 3</b></h5>
+                    <h6><b>New Products</b></h6>
+                    <a href="https://innovatetogrow.ucmerced.edu/schedule">Room 3</a>
+                    <h6>Pass: I2G2020</h6>
+                    <h6>Judge Form</h6>
+                </div>
+    
+                <div class="span2">
+                    <h5><b>Track 4</b></h5>
+                    <h6><b>Energy</b></h6>
+                    <a href="https://innovatetogrow.ucmerced.edu/schedule">Room 4</a>
+                    <h6>Pass: I2G2020</h6>
+                    <h6>Judge Form</h6>
+                </div>
+            </div>
+        </div>
+    
+        <div class="span3">
+            <h4 style="text-align: center;">Engineering Service Learning (ESL)</h4>
+            <div class="span12 figure">
+                
+                <div class="span12" style="text-align: center">
+                    <h5><b>Track 5</b></h5>
+                    <h6><b>Service Learning</b></h6>
+                    <a href="https://innovatetogrow.ucmerced.edu/schedule">Room 5</a>
+                    <h6>Pass: I2G2020</h6>
+                    <h6>Judge Form</h6>
+                </div>
+            </div>
+        </div>
+    
+        <div class="span3">
+            <h4 style="text-align: center;">Software Engineering Capstone (CSE)</h4>
+            <div class="span12 figure">
+                <div class="span5" style="text-align: center;">
+                    <h5><b>Track 6</b></h5>
+                    <h6><b>Buisness Problems</b></h6>
+                    <a href="https://innovatetogrow.ucmerced.edu/schedule">Room 6</a>
+                    <h6>Pass: I2G2020</h6>
+                    <h6>Judge Form</h6>
+                </div>
+    
+                <div class="span5" style="text-align: center;">
+                    <h5><b>Track 7</b></h5>
+                    <h6><b>Software Problems</b></h6>
+                    <a href="https://innovatetogrow.ucmerced.edu/schedule">Room 7</a>
+                    <h6>Pass: I2G2020</h6>
+                    <h6>Judge Form</h6>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="span12 figure">
+        <div class="span6">
+            <div class="span12 figure" style="text-align: center;">
+                 <div class="span1">
+                    <h5><b>Start</b></h5>
+                    <button><b>11:15</b></button>
+                    <button><b>11:30</b></button>
+                    <button><b>12:00</b></button>
+                    <button><b>12:30</b></button>
+                    <button><b>13:00</b></button>
+                    <button><b>13:30</b></button>
+                    <button><b>14:00</b></button>
+                    <button><b>14:30</b></button>
+                    
+                </div>
+                <div class="span3">
+                    <h5>Track 1</h5>
+                    <button style="font-size: 13px;">Intro Video</button>
+                    <button id = 'slot11' onClick="passvalue('slot11')">CAP01</button>
+                    <button id = 'slot12' onClick="passvalue('slot12')">CAP02</button>
+                    <button id = 'slot13' onClick="passvalue('slot13')">CAP22</button>
+                    <button id = 'slot14' onClick="passvalue('slot14')">CAP24</button>
+                    <button id = 'slot15' onClick="passvalue('slot15')">CAP10</button>
+                    <button id = 'slot16' onClick="passvalue('slot16')">CAP17</button>
+                    <button>End of Presentation</button>
+                </div>
+                <div class="span3">
+                    <h5>Track 2</h5>
+                    <button style="font-size: 13px;">Intro Video</button>
+                    <button id = 'slot21' onClick="passvalue('slot21')">CAP09</button>
+                    <button id = 'slot22' onClick="passvalue('slot22')">CAP04</button>
+                    <button id = 'slot23' onClick="passvalue('slot23')">CAP05</button>
+                    <button id = 'slot24' onClick="passvalue('slot24')">CAP12</button>
+                    <button id = 'slot25' onClick="passvalue('slot25')">CAP13</button>
+                    <button id = 'slot26' onClick="passvalue('slot26')">CAP14</button>
+                    <button>End of Presentation</button>
+                </div>
+    
+                <div class="span3">
+                    <h5>Track 3</h5>
+                    <button style="font-size: 13px;">Intro Video</button>
+                    <button id = 'slot31' onClick="passvalue('slot31')">CAP16</button>
+                    <button id = 'slot32' onClick="passvalue('slot32')">CAP11</button>
+                    <button id = 'slot33' onClick="passvalue('slot33')">CAP20</button>
+                    <button id = 'slot34' onClick="passvalue('slot34')">CAP21</button>
+                    <button id = 'slot35' onClick="passvalue('slot35')">CAP18</button>
+                    <button id = 'slot36' onClick="passvalue('slot36')">CAP15</button>
+                    <button>End of Presentation</button>
+                </div>
+    
+                <div class="span2">
+                    <h5>Track 4</h5>
+                    <button style="font-size: 13px;">Intro Video</button>
+                    <button id = 'slot41' onClick="passvalue('slot41')">CAP23</button>
+                    <button id = 'slot42' onClick="passvalue('slot42')">CAP19</button>
+                    <button id = 'slot43' onClick="passvalue('slot43')">CAP03</button>
+                    <button id = 'slot44' onClick="passvalue('slot44')">CAP06</button>
+                    <button id = 'slot45' onClick="passvalue('slot45')">CAP07</button>
+                    <button id = 'slot46' onClick="passvalue('slot46')">CAP08</button>
+                    <button>End of Presentation</button>
+                </div>
+            </div>
+        </div>
+    
+        <div class="span3">
+            <div class="span12 figure">
+                <div class="span6" style="text-align: center">
+                    <h5>Start</h5>
+                    <button><b>11:15</b></button>
+                    <button><b>11:30</b></button>
+                    <button><b>12:00</b></button>
+                    <button><b>12:30</b></button>
+                </div>
+                <div class="span6" style="text-align: center">
+                    <h5>Track 4</h5>
+                    <button style="font-size: 13px;">Intro Video</button>
+                    <button id = 'slot51' onClick="passvalue('slot51')">ESL1</button>
+                    <button id = 'slot52' onClick="passvalue('slot52')">ESL2</button>
+                    <button>End of Presentation</button>
+                </div>
+            </div>
+        </div>
+    
+        <div class="span3">
+            <div class="span12 figure">
+                <div class="span2" style="text-align: center;">
+                    <h5>Start</h5>
+                    <button><b>11:15</b></button>
+                    <button><b>11:30</b></button>
+                    <button><b>11:50</b></button>
+                    <button><b>12:10</b></button>
+                    <button><b>12:30</b></button>
+                    <button><b>12:50</b></button>
+                    <button><b>13:10</b></button>
+                    <button><b>13:30</b></button>
+                    <button><b>13:50</b></button>
+                    <button><b>14:10</b></button>
+                    <button><b>14:30</b></button>
+                </div>
+                <div class="span5" style="text-align: center;">
+                    <h5>Track 6</h5>
+                    <button style="font-size: 13px;">Intro Video</button>
+                    <button id = 'slot61' onClick="passvalue('slot61')">CSE12</button>
+                    <button id = 'slot62' onClick="passvalue('slot62')">CSE13</button>
+                    <button id = 'slot63' onClick="passvalue('slot63')">CSE14</button>
+                    <button id = 'slot64' onClick="passvalue('slot64')">CSE06</button>
+                    <button id = 'slot65' onClick="passvalue('slot65')">CSE07</button>
+                    <button id = 'slot66' onClick="passvalue('slot66')">CSE08</button>
+                    <button id = 'slot67' onClick="passvalue('slot67')">CSE09</button>
+                    <button id = 'slot68' onClick="passvalue('slot68')">CSE10</button>
+                    <button id = 'slot69' onClick="passvalue('slot69')">CSE11</button>
+                    <button>End of Presentation</button>
+                </div>
+    
+                <div class="span5" style="text-align: center;">
+                    <h5>Track 7</h5>
+                    <button style="font-size: 13px;">Intro Video</button>
+                    <button id = 'slot71' onClick="passvalue('slot71')">CSE15</button>
+                    <button id = 'slot72' onClick="passvalue('slot72')">CSE16</button>
+                    <button id = 'slot73' onClick="passvalue('slot73')">CSE17</button>
+                    <button id = 'slot74' onClick="passvalue('slot74')">CSE01</button>
+                    <button id = 'slot75' onClick="passvalue('slot75')">CSE02</button>
+                    <button id = 'slot76' onClick="passvalue('slot76')">CSE03</button>
+                    <button id = 'slot77' onClick="passvalue('slot77')">CSE04</button>
+                    <button id = 'slot78' onClick="passvalue('slot78')">CSE05</button>
+                    <button>End of Presentation</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="projects">
+        <table class="display" id="example" style="width:100%">
+            <thead>
+            <tr>
+                <th>Details</th>
+                <th>Track</th>
+                <th>Class</th>
+                <th>Team#</th>
+                <th>Team Name</th>
+                <th>Project Title</th>
+                <th>Organization</th>
+            </tr>
+            </thead>
+            <tfoot>
+                <tr>
+                <th>Details</th>
+                <th>Track</th>
+                <th>Class</th>
+                <th>Team#</th>
+                <th>Team Name</th>
+                <th>Project Title</th>
+                <th>Organization</th>
+            </tr>
+            </tfoot>
+        </table>
+    </div>
+</body>
+</html>
