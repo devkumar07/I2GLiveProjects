@@ -1,8 +1,4 @@
-<!DOCTYPE html>
-<html>
-<head>
-<title>I2G</title>
-</head>
+<title></title>
 <link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
 <style type="text/css">td.details-control {
     background: url('../resources/details_open.png') no-repeat center center;
@@ -91,10 +87,7 @@ button{
     outline:none;
 }
 </style>
-<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" />
-    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
-    <script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
-    <script type="text/javascript">
+<link href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" rel="stylesheet" /><script src="https://code.jquery.com/jquery-3.3.1.js"></script><script type="text/javascript" charset="utf8" src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script><script type="text/javascript">
         function format(d) {
           // `d` is the original data object for the row
           return '<table cellpadding="5" cellspacing="0" border="0" style="padding-left:50px;">' +
@@ -189,288 +182,123 @@ button{
             }
           });
         });
-    </script>
-<body>
-    <script>
+    </script><script>
         function passvalue(slot){
             window.document.location = 'https://innovatetogrow.ucmerced.edu/schedule'+'?value='+document.getElementById(slot).innerHTML;
         }
     </script>
-    <div class="span12 figure">
-        <div class="span6">
-            <h4 style="text-align: center;">Engineering Capstone (CAP)</h4>
-            <div class="span12 figure" style="text-align: center;">
-                <div class="span3">
-                    <h5><b>Track 1</b></h5>
-                    <h6><b>AgTech</b></h6>
-                    <a href="https://innovatetogrow.ucmerced.edu/schedule">Room 1</a>
-                    <h6>Pass: I2G2020</h6>
-                    <h6>Judge Form</h6>
-                </div>
-                <div class="span3">
-                    <h5><b>Track 2</b></h5>
-                    <h6><b>Food Processing</b></h6>
-                    <a href="https://innovatetogrow.ucmerced.edu/schedule">Room 2</a>
-                    <h6>Pass: I2G2020</h6>
-                    <h6>Judge Form</h6>
-                </div>
-    
-                <div class="span3">
-                    <h5><b>Track 3</b></h5>
-                    <h6><b>New Products</b></h6>
-                    <a href="https://innovatetogrow.ucmerced.edu/schedule">Room 3</a>
-                    <h6>Pass: I2G2020</h6>
-                    <h6>Judge Form</h6>
-                </div>
-    
-                <div class="span2">
-                    <h5><b>Track 4</b></h5>
-                    <h6><b>Energy</b></h6>
-                    <a href="https://innovatetogrow.ucmerced.edu/schedule">Room 4</a>
-                    <h6>Pass: I2G2020</h6>
-                    <h6>Judge Form</h6>
-                </div>
-            </div>
-        </div>
-    
-        <div class="span3">
-            <h4 style="text-align: center;">Engineering Service Learning (ESL)</h4>
-            <div class="span12 figure">
-                
-                <div class="span12" style="text-align: center">
-                    <h5><b>Track 5</b></h5>
-                    <h6><b>Service Learning</b></h6>
-                    <a href="https://innovatetogrow.ucmerced.edu/schedule">Room 5</a>
-                    <h6>Pass: I2G2020</h6>
-                    <h6>Judge Form</h6>
-                </div>
-            </div>
-        </div>
-    
-        <div class="span3">
-            <h4 style="text-align: center;">Software Engineering Capstone (CSE)</h4>
-            <div class="span12 figure">
-                <div class="span5" style="text-align: center;">
-                    <h5><b>Track 6</b></h5>
-                    <h6><b>Buisness Problems</b></h6>
-                    <a href="https://innovatetogrow.ucmerced.edu/schedule">Room 6</a>
-                    <h6>Pass: I2G2020</h6>
-                    <h6>Judge Form</h6>
-                </div>
-    
-                <div class="span5" style="text-align: center;">
-                    <h5><b>Track 7</b></h5>
-                    <h6><b>Software Problems</b></h6>
-                    <a href="https://innovatetogrow.ucmerced.edu/schedule">Room 7</a>
-                    <h6>Pass: I2G2020</h6>
-                    <h6>Judge Form</h6>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div class="span12 figure">
-        <div class="span6">
-            <div class="span12 figure" style="text-align: center;">
-                 <div class="span1">
-                    <h5><b>Start</b></h5>
-                    <button><b>11:15</b></button>
-                    <button><b>11:30</b></button>
-                    <button><b>12:00</b></button>
-                    <button><b>12:30</b></button>
-                    <button><b>13:00</b></button>
-                    <button><b>13:30</b></button>
-                    <button><b>14:00</b></button>
-                    <button><b>14:30</b></button>
-                    
-                </div>
-                <div class="span3">
-                    <h5>Track 1</h5>
-                    <button style="font-size: 13px;">Intro Video</button>
-                    <button id = 'slot11' onClick="passvalue('slot11')">CAP01</button>
-                    <button id = 'slot12' onClick="passvalue('slot12')">CAP02</button>
-                    <button id = 'slot13' onClick="passvalue('slot13')">CAP22</button>
-                    <button id = 'slot14' onClick="passvalue('slot14')">CAP24</button>
-                    <button id = 'slot15' onClick="passvalue('slot15')">CAP10</button>
-                    <button id = 'slot16' onClick="passvalue('slot16')">CAP17</button>
-                    <button>End of Presentation</button>
-                </div>
-                <div class="span3">
-                    <h5>Track 2</h5>
-                    <button style="font-size: 13px;">Intro Video</button>
-                    <button id = 'slot21' onClick="passvalue('slot21')">CAP09</button>
-                    <button id = 'slot22' onClick="passvalue('slot22')">CAP04</button>
-                    <button id = 'slot23' onClick="passvalue('slot23')">CAP05</button>
-                    <button id = 'slot24' onClick="passvalue('slot24')">CAP12</button>
-                    <button id = 'slot25' onClick="passvalue('slot25')">CAP13</button>
-                    <button id = 'slot26' onClick="passvalue('slot26')">CAP14</button>
-                    <button>End of Presentation</button>
-                </div>
-    
-                <div class="span3">
-                    <h5>Track 3</h5>
-                    <button style="font-size: 13px;">Intro Video</button>
-                    <button id = 'slot31' onClick="passvalue('slot31')">CAP16</button>
-                    <button id = 'slot32' onClick="passvalue('slot32')">CAP11</button>
-                    <button id = 'slot33' onClick="passvalue('slot33')">CAP20</button>
-                    <button id = 'slot34' onClick="passvalue('slot34')">CAP21</button>
-                    <button id = 'slot35' onClick="passvalue('slot35')">CAP18</button>
-                    <button id = 'slot36' onClick="passvalue('slot36')">CAP15</button>
-                    <button>End of Presentation</button>
-                </div>
-    
-                <div class="span2">
-                    <h5>Track 4</h5>
-                    <button style="font-size: 13px;">Intro Video</button>
-                    <button id = 'slot41' onClick="passvalue('slot41')">CAP23</button>
-                    <button id = 'slot42' onClick="passvalue('slot42')">CAP19</button>
-                    <button id = 'slot43' onClick="passvalue('slot43')">CAP03</button>
-                    <button id = 'slot44' onClick="passvalue('slot44')">CAP06</button>
-                    <button id = 'slot45' onClick="passvalue('slot45')">CAP07</button>
-                    <button id = 'slot46' onClick="passvalue('slot46')">CAP08</button>
-                    <button>End of Presentation</button>
-                </div>
-            </div>
-        </div>
-    
-        <div class="span3">
-            <div class="span12 figure">
-                <div class="span6" style="text-align: center">
-                    <h5>Start</h5>
-                    <button><b>11:15</b></button>
-                    <button><b>11:30</b></button>
-                    <button><b>12:00</b></button>
-                    <button><b>12:30</b></button>
-                </div>
-                <div class="span6" style="text-align: center">
-                    <h5>Track 4</h5>
-                    <button style="font-size: 13px;">Intro Video</button>
-                    <button id = 'slot51' onClick="passvalue('slot51')">ESL1</button>
-                    <button id = 'slot52' onClick="passvalue('slot52')">ESL2</button>
-                    <button>End of Presentation</button>
-                </div>
-            </div>
-        </div>
-    
-        <div class="span3">
-            <div class="span12 figure">
-                <div class="span2" style="text-align: center;">
-                    <h5>Start</h5>
-                    <button><b>11:15</b></button>
-                    <button><b>11:30</b></button>
-                    <button><b>11:50</b></button>
-                    <button><b>12:10</b></button>
-                    <button><b>12:30</b></button>
-                    <button><b>12:50</b></button>
-                    <button><b>13:10</b></button>
-                    <button><b>13:30</b></button>
-                    <button><b>13:50</b></button>
-                    <button><b>14:10</b></button>
-                    <button><b>14:30</b></button>
-                </div>
-                <div class="span5" style="text-align: center;">
-                    <h5>Track 6</h5>
-                    <button style="font-size: 13px;">Intro Video</button>
-                    <button id = 'slot61' onClick="passvalue('slot61')">CSE12</button>
-                    <button id = 'slot62' onClick="passvalue('slot62')">CSE13</button>
-                    <button id = 'slot63' onClick="passvalue('slot63')">CSE14</button>
-                    <button id = 'slot64' onClick="passvalue('slot64')">CSE06</button>
-                    <button id = 'slot65' onClick="passvalue('slot65')">CSE07</button>
-                    <button id = 'slot66' onClick="passvalue('slot66')">CSE08</button>
-                    <button id = 'slot67' onClick="passvalue('slot67')">CSE09</button>
-                    <button id = 'slot68' onClick="passvalue('slot68')">CSE10</button>
-                    <button id = 'slot69' onClick="passvalue('slot69')">CSE11</button>
-                    <button>End of Presentation</button>
-                </div>
-    
-                <div class="span5" style="text-align: center;">
-                    <h5>Track 7</h5>
-                    <button style="font-size: 13px;">Intro Video</button>
-                    <button id = 'slot71' onClick="passvalue('slot71')">CSE15</button>
-                    <button id = 'slot72' onClick="passvalue('slot72')">CSE16</button>
-                    <button id = 'slot73' onClick="passvalue('slot73')">CSE17</button>
-                    <button id = 'slot74' onClick="passvalue('slot74')">CSE01</button>
-                    <button id = 'slot75' onClick="passvalue('slot75')">CSE02</button>
-                    <button id = 'slot76' onClick="passvalue('slot76')">CSE03</button>
-                    <button id = 'slot77' onClick="passvalue('slot77')">CSE04</button>
-                    <button id = 'slot78' onClick="passvalue('slot78')">CSE05</button>
-                    <button>End of Presentation</button>
-                </div>
-            </div>
-        </div>
-    </div>
-    <div id="projects">
-        <table class="display" id="example" style="width:100%">
-            <thead>
-            <tr>
-                <th>Details</th>
-                <th>Track</th>
-                <th>Class</th>
-                <th>Team#</th>
-                <th>Team Name</th>
-                <th>Project Title</th>
-                <th>Organization</th>
-            </tr>
-            </thead>
-            <tfoot>
-                <tr>
-                <th>Details</th>
-                <th>Track</th>
-                <th>Class</th>
-                <th>Team#</th>
-                <th>Team Name</th>
-                <th>Project Title</th>
-                <th>Organization</th>
-            </tr>
-            </tfoot>
-        </table>
-    </div>
-    <div class="span12 figure">
-        <h4 style="text-align: left;">Software Engineer Capstone (CSE)</h4>
-        <div class="span1" style="text-align: center;">
-            <h5><b>11:30</b></h5>
-            <button id = 'slot61' onClick="passvalue('slot61')">CSE12</button>
-            <button id = 'slot71' onClick="passvalue('slot71')">CSE15</button>
-        </div>
-        <div class="span1" style="text-align: center;">
-            <h5><b>11:50</b></h5>
-            <button id = 'slot62' onClick="passvalue('slot62')">CSE13</button>
-            <button id = 'slot72' onClick="passvalue('slot72')">CSE16</button>
-        </div>
-        <div class="span1" style="text-align: center;">
-            <h5><b>12:10</b></h5>
-            <button id = 'slot63' onClick="passvalue('slot63')">CSE14</button>
-            <button id = 'slot73' onClick="passvalue('slot73')">CSE17</button>
-        </div>
-        <div class="span1" style="text-align: center;">
-            <h5><b>12:30</b></h5>
-            <button id = 'slot74' onClick="passvalue('slot74')">CSE01</button>
-            <button id = 'slot64' onClick="passvalue('slot64')">CSE06</button>
-        </div>
-        <div class="span1" style="text-align: center;">
-            <h5><b>12:50</b></h5>
-            <button id = 'slot75' onClick="passvalue('slot75')">CSE02</button>
-            <button id = 'slot65' onClick="passvalue('slot65')">CSE07</button>
-        </div>
-        <div class="span1" style="text-align: center;">
-            <h5><b>13:10</b></h5>
-            <button id = 'slot76' onClick="passvalue('slot76')">CSE03</button>
-            <button id = 'slot66' onClick="passvalue('slot66')">CSE08</button>
-        </div>
-        <div class="span1" style="text-align: center;">
-            <h5><b>13:30</b></h5>
-            <button id = 'slot77' onClick="passvalue('slot77')">CSE04</button>
-            <button id = 'slot67' onClick="passvalue('slot67')">CSE09</button>
-        </div>
-        <div class="span1" style="text-align: center;">
-            <h5><b>13:50</b></h5>
-            <button id = 'slot78' onClick="passvalue('slot78')">CSE05</button>
-            <button id = 'slot68' onClick="passvalue('slot68')">CSE10</button>
-        </div>
-        <div class="span1" style="text-align: center;">
-            <h5><b>14:10</b></h5>
-            <button id = 'slot69' onClick="passvalue('slot69')">CSE11</button>
-        </div>
-    </div>
+<h1>Version 2</h1>
+<div class="span12 figure">
+	<h4 style="text-align: left;">Engineering Capstone (CAP) and Service Learning (ESL)</h4>
 
-</body>
-</html>
+	<div class="span1" style="text-align: center;">
+		<h5><b>11:15</b></h5>
+		<button>Intro Video</button></div>
+
+	<div class="span1" style="text-align: center;">
+		<h5><b>11:30</b></h5>
+		<button id="slot11" onclick="passvalue('slot11')">CAP01</button><button id="slot21" onclick="passvalue('slot21')">CAP09</button><button id="slot31" onclick="passvalue('slot31')">CAP16</button><button id="slot41" onclick="passvalue('slot41')">CAP23</button><button id="slot51" onclick="passvalue('slot51')">ESL1</button></div>
+
+	<div class="span1" style="text-align: center;">
+		<h5><b>12:00</b></h5>
+		<button id="slot12" onclick="passvalue('slot12')">CAP02</button><button id="slot22" onclick="passvalue('slot22')">CAP04</button><button id="slot32" onclick="passvalue('slot32')">CAP11</button><button id="slot42" onclick="passvalue('slot42')">CAP19</button><button id="slot52" onclick="passvalue('slot52')">ESL2</button></div>
+
+	<div class="span1" style="text-align: center;">
+		<h5><b>12:30</b></h5>
+		<button id="slot13" onclick="passvalue('slot13')">CAP22</button><button id="slot23" onclick="passvalue('slot23')">CAP05</button><button id="slot33" onclick="passvalue('slot33')">CAP20</button><button id="slot43" onclick="passvalue('slot43')">CAP03</button></div>
+
+	<div class="span1" style="text-align: center;">
+		<h5><b>13:00</b></h5>
+		<button id="slot14" onclick="passvalue('slot14')">CAP24</button><button id="slot24" onclick="passvalue('slot24')">CAP12</button><button id="slot34" onclick="passvalue('slot34')">CAP21</button><button id="slot44" onclick="passvalue('slot44')">CAP06</button></div>
+
+	<div class="span1" style="text-align: center;">
+		<h5><b>13:30</b></h5>
+		<button id="slot15" onclick="passvalue('slot15')">CAP10</button><button id="slot25" onclick="passvalue('slot25')">CAP13</button><button id="slot35" onclick="passvalue('slot35')">CAP18</button><button id="slot45" onclick="passvalue('slot45')">CAP07</button></div>
+
+	<div class="span1" style="text-align: center;">
+		<h5><b>14:00</b></h5>
+		<button id="slot16" onclick="passvalue('slot16')">CAP17</button><button id="slot26" onclick="passvalue('slot26')">CAP14</button><button id="slot36" onclick="passvalue('slot36')">CAP15</button><button id="slot46" onclick="passvalue('slot46')">CAP08</button></div>
+
+	<div class="span1" style="text-align: center;">
+		<h5><b>14:30</b></h5>
+
+		<h6>End of Presentation</h6>
+	</div>
+</div>
+
+<div class="span12 figure">
+	<h4 style="text-align: left;">Software Engineer Capstone (CSE)</h4>
+
+	<div class="span1" style="text-align: center;">
+		<h5><b>11:15</b></h5>
+		<button>Intro Video</button></div>
+
+	<div class="span1" style="text-align: center;">
+		<h5><b>11:30</b></h5>
+		<button id="slot61" onclick="passvalue('slot61')">CSE12</button><button id="slot71" onclick="passvalue('slot71')">CSE15</button></div>
+
+	<div class="span1" style="text-align: center;">
+		<h5><b>11:50</b></h5>
+		<button id="slot62" onclick="passvalue('slot62')">CSE13</button><button id="slot72" onclick="passvalue('slot72')">CSE16</button></div>
+
+	<div class="span1" style="text-align: center;">
+		<h5><b>12:10</b></h5>
+		<button id="slot63" onclick="passvalue('slot63')">CSE14</button><button id="slot73" onclick="passvalue('slot73')">CSE17</button></div>
+
+	<div class="span1" style="text-align: center;">
+		<h5><b>12:30</b></h5>
+		<button id="slot74" onclick="passvalue('slot74')">CSE01</button><button id="slot64" onclick="passvalue('slot64')">CSE06</button></div>
+
+	<div class="span1" style="text-align: center;">
+		<h5><b>12:50</b></h5>
+		<button id="slot75" onclick="passvalue('slot75')">CSE02</button><button id="slot65" onclick="passvalue('slot65')">CSE07</button></div>
+
+	<div class="span1" style="text-align: center;">
+		<h5><b>13:10</b></h5>
+		<button id="slot76" onclick="passvalue('slot76')">CSE03</button><button id="slot66" onclick="passvalue('slot66')">CSE08</button></div>
+
+	<div class="span1" style="text-align: center;">
+		<h5><b>13:30</b></h5>
+		<button id="slot77" onclick="passvalue('slot77')">CSE04</button><button id="slot67" onclick="passvalue('slot67')">CSE09</button></div>
+
+	<div class="span1" style="text-align: center;">
+		<h5><b>13:50</b></h5>
+		<button id="slot78" onclick="passvalue('slot78')">CSE05</button><button id="slot68" onclick="passvalue('slot68')">CSE10</button></div>
+
+	<div class="span1" style="text-align: center;">
+		<h5><b>14:10</b></h5>
+		<button id="slot69" onclick="passvalue('slot69')">CSE11</button></div>
+
+	<div class="span1" style="text-align: center;">
+		<h5><b>14:30</b></h5>
+
+		<h6>End of Presentation</h6>
+	</div>
+</div>
+
+<div id="projects">
+	<table class="display" id="example" style="width:100%">
+		<thead>
+			<tr>
+				<th>Details</th>
+				<th>Track</th>
+				<th>Class</th>
+				<th>Team#</th>
+				<th>Team Name</th>
+				<th>Project Title</th>
+				<th>Organization</th>
+			</tr>
+		</thead>
+		<tfoot>
+			<tr>
+				<th>Details</th>
+				<th>Track</th>
+				<th>Class</th>
+				<th>Team#</th>
+				<th>Team Name</th>
+				<th>Project Title</th>
+				<th>Organization</th>
+			</tr>
+		</tfoot>
+	</table>
+</div>
